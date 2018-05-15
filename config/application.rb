@@ -17,6 +17,7 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module ProjectX
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -31,5 +32,10 @@ module ProjectX
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.action_dispatch.default_headers = {
+    'Access-Control-Allow-Origin' => 'http://mysterious-garden-51394.herokuapp.com/users',
+    'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
+  }
   end
 end
