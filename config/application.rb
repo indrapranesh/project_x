@@ -33,9 +33,11 @@ module ProjectX
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.action_dispatch.default_headers = {
-    'Access-Control-Allow-Origin' => 'http://mysterious-garden-51394.herokuapp.com/users',
-    'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
-  }
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end
