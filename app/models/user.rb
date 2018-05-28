@@ -5,6 +5,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email,presence: true
-  validates :password, presence: true ,length: { minimum: 6 }
+  validates :password, presence: true ,length: { minimum: 6 }, if: :password_required?
+
+def password_required?
+  new_record? || password.present?
+end
 end 		 	
 

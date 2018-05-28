@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [ :show ]
+	#before_action :set_user, only: [ :show ]
 	#before_action :validate_user, only: [ :create ]
   	#before_action :validate_type, only: [ :create ]
 	def new
