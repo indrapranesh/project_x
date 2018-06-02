@@ -7,7 +7,7 @@ attributes :comments
      object.user
    end
    def comments
-   	object.comments
+   	object.comments.select(:id,:comment)
    	
    end
   # def comments
