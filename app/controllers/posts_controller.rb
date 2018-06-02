@@ -24,6 +24,15 @@ class PostsController < ApplicationController
    render json: posts  #, include: ['user']
   end
 
+
+  def like
+    @post = Post.find(params[:post_id])
+    #@post.like = @post.like+1
+    #@post.save
+    @post.update_attribute(:like, @post.like + 1)
+   # render json: post
+  end
+
   def create
     #logger.info params.inspect
   	@post = Post.new(post_params)
@@ -36,6 +45,10 @@ class PostsController < ApplicationController
 
   private
 
+  def lke_params
+    params.require(:post).permit(:post_id)
+    
+  end
   def post_params
     params.require(:post).permit(:user_id , :content, :like)
   end
