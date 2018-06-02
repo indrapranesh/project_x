@@ -6,6 +6,9 @@ class PostsController < ApplicationController
 
 	def index
     posts = Post.all
+  # posts = Post.all.includes(:comments)
+  #render json: posts, include: ['comment']
+
     #if params[:filter]
      # posts = posts.where(["category = ?", params[:filter]])
     #end
@@ -18,7 +21,7 @@ class PostsController < ApplicationController
       #end
     #end
     #posts = posts.page(params[:page] ? params[:page][:number] : 1)
-    render json: posts, include: ['user']
+   render json: posts  #, include: ['user']
   end
 
   def create

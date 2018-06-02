@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 	resources :posts 
 	resources :comments
  	
+	post    'like'     => 'posts#like'
 	post    'login'     => 'sessions#create'
   delete  'logout/:id' => 'sessions#destroy'
   # match '*path', via: [:options], to:  lambda {|_| [204, {'Content-Type' => 'text/plain'}, []]}
