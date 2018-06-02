@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       #end
     #end
     #posts = posts.page(params[:page] ? params[:page][:number] : 1)
+    posts = Post.order('created_at DESC')
    render json: posts  #, include: ['user']
   end
 
