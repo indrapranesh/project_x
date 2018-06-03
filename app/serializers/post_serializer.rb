@@ -1,13 +1,12 @@
 class PostSerializer < ActiveModel::Serializer
 
-  attributes :id, :content, :like, :created_at, :updated_at
- attributes :user
-attributes :comments
+  attributes :id, :content, :like, :created_at, :updated_at,:user,:comments
+
    def user
      object.user
    end
    def comments
-   	object.comments.select(:id,:comment)
+   	object.comments
    	
    end
   # def comments
